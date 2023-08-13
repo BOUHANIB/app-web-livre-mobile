@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Exposant Details</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+</head>
+<body>
+<nav class="p-3">
+    <nav class="container">
+        <div class="card">
+            <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+
+
+                <h4 class="card-title mt-3 text-center">
+                        ExposantDetails :
+                    </h4>
+
+                <a href="/dashboard" class="btn btn-outline-primary ml-auto">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Dashboard
+                </a>
+        </div>
+
+                        <span class="form-control" th:text="${user.userId}" hidden></span>
+
+
+                <i>Nom :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                    </div>
+                    <span class="form-control" th:text="${user.username}"></span>
+                </div>
+
+                <i>mail :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.mail == null or user.exposant.mail == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.mail != null and user.exposant.mail != ''}" th:text="${user.exposant.mail}"></span>
+                </div>
+
+                <i>E-mail :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.email == null or user.email == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.email != null and user.email != ''}" th:text="${user.email}"></span>
+                </div>
+
+                <i>Pays :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.pays == null or user.exposant.pays == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.pays != null and user.exposant.pays != ''}" th:text="${user.exposant.pays}"></span>
+                </div>
+
+
+                <i>Telephone :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.telephone == null or user.exposant.telephone == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.telephone != null and user.exposant.telephone != ''}" th:text="${user.exposant.telephone}"></span>
+                </div>
+
+                <i>Site Web :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.siteWeb == null or user.exposant.siteWeb == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.siteWeb != null and user.exposant.siteWeb != ''}" th:text="${user.exposant.siteWeb}"></span>
+                </div>
+
+                <i>Adresse :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.adresse == null or user.exposant.adresse == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.adresse != null and user.exposant.adresse != ''}" th:text="${user.exposant.adresse}"></span>
+                </div>
+
+                <i>Responsable Salle:</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.responsableSalle == null or user.exposant.responsableSalle == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.responsableSalle != null and user.exposant.responsableSalle != ''}" th:text="${user.exposant.responsableSalle}"></span>
+                </div>
+
+
+                <i>Responsable :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.responsable == null or user.exposant.responsable == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.responsable != null and user.exposant.responsable != ''}" th:text="${user.exposant.responsable}"></span>
+                </div>
+
+                <i>Specialite :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.specialite == null or user.exposant.specialite == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.specialite != null and user.exposant.specialite != ''}" th:text="${user.exposant.specialite}"></span>
+                </div>
+
+
+                <i>Localisation :</i>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                    </div>
+                    <span class="form-control" th:if="${user.exposant.localisation == null or user.exposant.localisation == ''}" th:text="Indisponible"></span>
+                    <span class="form-control" th:if="${user.exposant.localisation != null and user.exposant.localisation != ''}" th:text="${user.exposant.localisation}"></span>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</nav>
+
+</body>
+</html>
