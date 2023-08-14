@@ -32,7 +32,6 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE},
             mappedBy = "user")
-    private Set<Authority> authorities = new HashSet<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Exposant exposant;

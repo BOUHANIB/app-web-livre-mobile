@@ -83,4 +83,15 @@ public class ExposantControllerVisiteur {
         // Rediriger vers la page "exposantdetails.html"
         return "exposantdetailss";
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping("/home")
+    public String index() {
+        return "home";
+    }
+
 }

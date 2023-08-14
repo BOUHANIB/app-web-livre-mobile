@@ -21,11 +21,6 @@
                         <h3>Liste des livres :</h3>
                     </div>
 
-                    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-                    <a th:href="@{/formLivres}" class="btn btn-outline-primary ml-auto">
-                        <i class="fa fa-plus"></i>New Livre
-                    </a>
-                    </div>
                 </div>
                 <form method="get" th:action="@{listLivres}">
                     <div class="d-flex align-items-center">
@@ -73,16 +68,6 @@
                             <td style="text-align: center;">
                                 <a th:href="@{/livredetails(id=${livre.livreId})}" class="btn btn-outline-warning">
                                     <i class="fa fa-bars"></i>
-                                </a>
-
-                                <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-                                <a th:href="@{/editLivre(id=${livre.livreId}, keyword=${keyword}, page=${currentPage})}" class="btn btn-outline-secondary">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <a onclick="return confirm('Etes vous sûre?')" class="btn btn-outline-danger"
-                                   th:href="@{deleteLivre(id=${livre.livreId}, keyword=${keyword}, page=${currentPage})}">
-                                    <i class="fa fa-trash"></i>
-                                </a>
                                 </a>
                             </td>
                         </tr>

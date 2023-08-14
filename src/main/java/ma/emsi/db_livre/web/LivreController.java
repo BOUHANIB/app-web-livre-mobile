@@ -2,12 +2,11 @@ package ma.emsi.db_livre.web;
 
 import jakarta.validation.Valid;
 import ma.emsi.db_livre.entities.Livre;
-import ma.emsi.db_livre.repositories.ExposantRepository;
+import ma.emsi.db_livre.repositories.ExposantRepositoryVisiteur;
 import ma.emsi.db_livre.repositories.LivreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,9 +21,6 @@ public class LivreController {
 
     @Autowired
     LivreRepository livreRepository;
-
-    @Autowired
-    ExposantRepository exposantRepository;
 
     @GetMapping(path = "/listLivres")
     public String livres(Model model,
@@ -55,11 +51,6 @@ public class LivreController {
         return "livres";
     }
 
-    @GetMapping("/deleteLivre")
-    public String deleteLivre(@RequestParam(name = "id") Long id, String keyword, int page){
-        livreRepository.deleteById(id);
-        return "redirect:/listLivres?page="+page+"&keyword="+keyword;
-    }
 
 
     @GetMapping("/livredetails")
@@ -70,37 +61,6 @@ public class LivreController {
         }
         model.addAttribute("livre", livre);
         return "livredetails";
-    }
-
-    @GetMapping(path = "/formLivres")
-    public String formLivre(Model model) {
-        model.addAttribute("livre", new Livre());
-        model.addAttribute("listExposants", exposantRepository.findAll()); // Récupérer tous les exposants
-        return "formLivres";
-    }
-
-    @PostMapping("/saveLivre")
-    public String saveLivre(Model model, @Valid Livre livre, BindingResult bindingResult,
-                            @RequestParam(defaultValue = "0") int page,
-                            @RequestParam(defaultValue = "") String keyword){
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("listExposants", exposantRepository.findAll()); // Récupérer tous les exposants en cas d'erreur
-            return "formLivres";
-        }
-        livre.setExposant(exposantRepository.findById(livre.getExposant().getExposantId()).orElse(null)); // Récupérer l'exposant à partir de l'ID sélectionné
-        livreRepository.save(livre);
-        return "redirect:/listLivres?page="+page+"&keyword="+keyword;
-    }
-
-    @GetMapping("/editLivre")
-    public String editLivre(Long id, Model model, String keyword, int page){
-        Livre livre = livreRepository.findById(id).orElse(null);
-        if (livre == null) throw new RuntimeException("Livre introuvable");
-        model.addAttribute("livre", livre);
-        model.addAttribute("page", page);
-        model.addAttribute("keyword", keyword);
-        model.addAttribute("listExposants", exposantRepository.findAll()); // Récupérer tous les exposants
-        return "editLivre";
     }
 
 }
